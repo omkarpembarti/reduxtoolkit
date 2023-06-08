@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 /*
 {
     "id": 1,
@@ -14,6 +15,14 @@ import React, { useEffect, useState } from 'react'
     }
 } */
 
+const productscontainer = {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: "10px"
+
+};
+
 const Product = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
@@ -21,12 +30,28 @@ const Product = () => {
             .then((Response) => Response.json())
             .then((data) => setProducts(data));
     }, []);
+
+    const cards = products.map((product) => (
+        <div className="col-md-3">
+            <Card border="primary" style={{ width: '18rem', border: '1px solid black' }}>
+                <div className='text-center'>
+                    <Card.Img variant="top" src={product.image} style={{ width: "100px", height: "100px" }} />
+                </div>
+                <Card.Body>
+                    <Card.Title>{product.title}</Card.Title>
+                    <Card.Text>
+                        {product.description}
+                    </Card.Text>
+                    <Button variant="primary">Go somewhere</Button>
+                </Card.Body>
+            </Card>
+        </div>
+    ));
+
     return (
         <>
-            {console.log(products)}
-            {products.forEach(product => (<h3>product.description</h3>))}
             <h1>Product Dashboard</h1>
-
+            <div className='products-container' style={productscontainer}>{cards}</div>
         </>
     )
 }
