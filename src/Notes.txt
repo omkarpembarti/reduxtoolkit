@@ -1,0 +1,4 @@
+Why Redux-Toolkit over Redux?
+--> Less weight, cleaner code, already configured.
+--> Creation of store is simpler.
+--> 
