@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { add } from '../slices/cartslice';
+import { add, remove } from '../slices/cartslice';
+import { useDispatch } from 'react-redux';
 
 /*
 {
@@ -25,6 +26,8 @@ const productscontainer = {
 
 };
 
+
+
 const Product = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
@@ -32,6 +35,9 @@ const Product = () => {
             .then((Response) => Response.json())
             .then((data) => setProducts(data));
     }, []);
+
+
+    const dispatch = useDispatch();
 
     const cards = products.map((product) => (
 
@@ -44,8 +50,8 @@ const Product = () => {
                 <Card.Text>
                     INR {product.price}
                 </Card.Text>
-                <Button variant="primary" onClick={() => add(product)}>Buy</Button>
-                <Button variant="primary">Remove</Button>
+                <Button variant="primary" onClick={() => dispatch(add(product))}>Buy</Button>
+                <Button variant="primary" onClick={() => dispatch(remove(product.id))}>Remove</Button>
             </Card.Body>
         </Card>
 
