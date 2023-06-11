@@ -40,7 +40,7 @@ const Product = () => {
                 <Card.Body>
                     <Card.Title>{product.title}</Card.Title>
                     <Card.Text>
-                        {product.description}
+                        INR {product.price}
                     </Card.Text>
                     <Button variant="primary">Go somewhere</Button>
                 </Card.Body>
