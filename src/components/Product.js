@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { add, remove } from '../slices/cartslice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 /*
 {
@@ -38,6 +38,8 @@ const Product = () => {
 
 
     const dispatch = useDispatch();
+    const cartProducts = useSelector((cartslice) => cartslice.cartslice);
+    console.log(cartProducts);
 
     const cards = products.map((product) => (
 
@@ -59,6 +61,11 @@ const Product = () => {
 
     return (
         <>
+            <h1>Cart</h1>
+
+            <div>{cartProducts.map((product) => {
+                return <div key={product.id}>{product.title}</div>
+            })}</div>
             <h1>Product Dashboard</h1>
             <div className='products-container' style={productscontainer}>{cards}</div>
         </>
