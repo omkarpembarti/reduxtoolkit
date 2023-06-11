@@ -62,10 +62,9 @@ const Product = () => {
     return (
         <>
             <h1>Cart</h1>
-
-            <div>{cartProducts.map((product) => {
+            <>{cartProducts.map((product) => {
                 return <div key={product.id}>{product.title}</div>
-            })}</div>
+            })}</>
             <h1>Product Dashboard</h1>
             <div className='products-container' style={productscontainer}>{cards}</div>
         </>
