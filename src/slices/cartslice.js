@@ -13,6 +13,7 @@ const cartslice = createSlice({
             return state.filter(s => {
                 if (s.id !== action.payload)
                     return true;
+                return false;
             })
         }
     }
