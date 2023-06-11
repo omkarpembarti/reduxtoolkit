@@ -1,10 +1,14 @@
 import Product from './components/Product';
 import './App.css';
+import { Provider } from 'react-redux';
+import store from './store';
 
 function App() {
   return (
     <div>
-      <Product></Product>
+      <Provider store={store}>
+        <Product></Product>
+      </Provider>
     </div>
   );
 }

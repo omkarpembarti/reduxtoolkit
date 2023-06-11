@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { add } from '../slices/cartslice';
+
 /*
 {
     "id": 1,
@@ -32,20 +34,21 @@ const Product = () => {
     }, []);
 
     const cards = products.map((product) => (
-        <div className="col-md-3">
-            <Card border="primary" style={{ width: '18rem', border: '1px solid black' }}>
-                <div className='text-center'>
-                    <Card.Img variant="top" src={product.image} style={{ width: "100px", height: "100px" }} />
-                </div>
-                <Card.Body>
-                    <Card.Title>{product.title}</Card.Title>
-                    <Card.Text>
-                        INR {product.price}
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-            </Card>
-        </div>
+
+        <Card border="primary" style={{ width: '18rem', border: '1px solid black' }} key={product.id}>
+            <div className='text-center'>
+                <Card.Img variant="top" src={product.image} style={{ width: "100px", height: "100px" }} />
+            </div>
+            <Card.Body>
+                <Card.Title>{product.title}</Card.Title>
+                <Card.Text>
+                    INR {product.price}
+                </Card.Text>
+                <Button variant="primary" onClick={() => add(product)}>Buy</Button>
+                <Button variant="primary">Remove</Button>
+            </Card.Body>
+        </Card>
+
     ));
 
     return (
